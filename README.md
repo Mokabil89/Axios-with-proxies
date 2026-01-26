@@ -1,61 +1,61 @@
-# Setting Up a Proxy in Axios
+# Einrichten eines Proxys in Axios
 
-[![Promo](https://github.com/luminati-io/Rotating-Residential-Proxies/blob/main/50%25%20off%20promo.png)](https://brightdata.com/proxy-types/residential-proxies) 
+[![Promo](https://github.com/luminati-io/Rotating-Residential-Proxies/blob/main/50%25%20off%20promo.png)](https://brightdata.de/proxy-types/residential-proxies) 
 
-This Axios proxy guide covers the following topics:
+Dieser Axios-Proxy-Leitfaden behandelt die folgenden Themen:
 
-1. [Axios and Proxies](#axios-and-proxies)
-2. [Using a Proxy in Axios](#using-a-proxy-in-axios)
+1. [Axios und Proxies](#axios-und-proxies)
+2. [Verwendung eines Proxys in Axios](#using-a-proxy-in-axios)
    - [HTTP/HTTPS Proxies](#httphttps-proxies)
    - [SOCKS Proxies](#socks-proxies)
-3. [Axios Proxy: Advanced Use Cases](#axios-proxy-advanced-use-cases)
-   - [Setting a Proxy Globally](#setting-a-proxy-globally)
-   - [Dealing With Proxy Authentication in Axios](#dealing-with-proxy-authentication-in-axios)
-   - [Setting Proxies via Environment Variables](#setting-proxies-via-environment-variables)
-   - [Implementing Rotating Proxies](#implementing-rotating-proxies)
-4. [Conclusion](#conclusion)
+3. [Axios Proxy: Fortgeschrittene Anwendungsfälle](#axios-proxy-advanced-use-cases)
+   - [Einen Proxy global festlegen](#setting-a-proxy-globally)
+   - [Umgang mit Proxy-Authentifizierung in Axios](#dealing-with-proxy-authentication-in-axios)
+   - [Proxies über Umgebungsvariablen festlegen](#setting-proxies-via-environment-variables)
+   - [Rotierende Proxies implementieren](#implementing-rotating-proxies)
+4. [Fazit](#conclusion)
 
-## Axios and Proxies
+## Axios und Proxies
 
-[Axios](https://axios-http.com/) is one the most widely-used HTTP clients in the JavaScript ecosystem. It offers a Promise-based, easy-to-use, intuitive API for performing HTTP requests and dealing with custom headers, configurations, and cookies.
+[Axios](https://axios-http.com/) ist einer der am weitesten verbreiteten HTTP-Clients im JavaScript-Ökosystem. Es bietet eine Promise-basierte, einfach zu verwendende, intuitive API zum Ausführen von HTTP-Anfragen und zum Umgang mit benutzerdefinierten Headern, Konfigurationen und Cookies.
 
-By routing your Axios requests through a proxy, you can mask your IP address, making it more challenging for the target server to identify and block you.
+Indem Sie Ihre Axios-Anfragen über einen Proxy leiten, können Sie Ihre IP-Adresse maskieren, wodurch es für den Zielserver schwieriger wird, Sie zu identifizieren und zu blockieren.
 
 ## Using a Proxy in Axios
 
-Let's set up an HTTP, HTTPS, or SOCKS proxy in Axios. Install the `axios` npm package:
+Richten wir einen HTTP-, HTTPS- oder SOCKS-Proxy in Axios ein. Installieren Sie das `axios` npm-Paket:
 
 ```bash
 npm install axios
 ```
 
-In Node.js, Axios natively supports HTTP and HTTPS proxies via the [`proxy`](https://github.com/axios/axios#request-config) config. So, if you want to use HTTP/HTTPS proxies with Axios in a Node.js application, there is nothing else todo here.
+In Node.js unterstützt Axios HTTP- und HTTPS-Proxies nativ über die [`proxy`](https://github.com/axios/axios#request-config)-Konfiguration. Wenn Sie also HTTP/HTTPS Proxies mit Axios in einer Node.js-Anwendung verwenden möchten, gibt es hier nichts Weiteres zu tun.
 
-If you instead want to use a non-HTTP/S proxy, you need to rely on the [Proxy Agents](https://github.com/TooTallNate/proxy-agents) project. This provides `http.Agent` implementations to integrate Axios with proxies in different protocols:
+Wenn Sie stattdessen einen Nicht-HTTP/S-Proxy verwenden möchten, müssen Sie auf das Projekt [Proxy Agents](https://github.com/TooTallNate/proxy-agents) zurückgreifen. Dieses stellt `http.Agent`-Implementierungen bereit, um Axios mit Proxies in unterschiedlichen Protokollen zu integrieren:
 
-- HTTP and HTTPS proxies: [`https-proxy-agent`](https://github.com/TooTallNate/proxy-agents/blob/main/packages/https-proxy-agent)
-- SOCKS, SOCKS5, and SOCKS4: [`socks-proxy-agent`](https://github.com/TooTallNate/proxy-agents/blob/main/packages/socks-proxy-agent)
+- HTTP und HTTPS Proxies: [`https-proxy-agent`](https://github.com/TooTallNate/proxy-agents/blob/main/packages/https-proxy-agent)
+- SOCKS, SOCKS5 und SOCKS4: [`socks-proxy-agent`](https://github.com/TooTallNate/proxy-agents/blob/main/packages/socks-proxy-agent)
 - PAC-\*: [`pac-proxy-agent`](https://github.com/TooTallNate/proxy-agents/blob/main/packages/pac-proxy-agent)
 
 ### HTTP/HTTPS Proxies
 
-The URL of your HTTP/HTTPS proxy should look like this:
+Die URL Ihres HTTP/HTTPS Proxys sollte wie folgt aussehen:
 
 ```
 "<PROXY_PROTOCOL>://<PROXY_HOST>:<PROXY_PORT>"
 ```
 
-- `<PROXY_PROTOCOL>` will be “http” for HTTP proxies and “https” for HTTPS proxies.
-- `<PROXY_HOST>` is generally a raw IP.
-- `<PROXY_PORT>` is the port the proxy server listens to.
+- `<PROXY_PROTOCOL>` ist „http“ für HTTP Proxies und „https“ für HTTPS Proxies.
+- `<PROXY_HOST>` ist in der Regel eine rohe IP.
+- `<PROXY_PORT>` ist der Port, auf dem der Proxy-Server lauscht.
 
-For example, suppose this is the URL of your HTTP proxy:
+Angenommen, dies ist die URL Ihres HTTP Proxys:
 
 ```
 "http://47.88.62.42:80"
 ```
 
-You can set this proxy in Axios as follows:
+Sie können diesen Proxy in Axios wie folgt festlegen:
 
 ```js
 axios.get(targetURL, {
@@ -73,17 +73,17 @@ axios.get(targetURL, {
 })
 ```
 
-To verify that the above Axios proxy approach works, retrieve the URL of a free HTTP or HTTPS proxy server. Try this example:
+Um zu überprüfen, dass der oben genannte Axios-Proxy-Ansatz funktioniert, rufen Sie die URL eines kostenlosen HTTP- oder HTTPS-Proxy-Servers ab. Probieren Sie dieses Beispiel:
 
 ```
 Protocol: HTTP; IP Address: 52.117.157.155; Port: 8002
 ```
 
-The complete proxy URL will be `http://52.117.157.155:8002`.
+Die vollständige Proxy-URL lautet `http://52.117.157.155:8002`.
 
-To verify that the proxy works as expected, target the [/ip](https://httpbin.io/ip) endpoint from the HTTPBin project. This public API returns the IP of the incoming request, so it should return the IP of the proxy server.
+Um zu überprüfen, dass der Proxy wie erwartet funktioniert, zielen Sie auf den Endpunkt [/ip](https://httpbin.io/ip) aus dem HTTPBin-Projekt. Diese öffentliche API gibt die IP der eingehenden Anfrage zurück, sodass sie die IP des Proxy-Servers zurückgeben sollte.
 
-The snippet of the Node.js script will be:
+Der Ausschnitt des Node.js-Skripts lautet:
 
 ```js
 import axios from "axios"
@@ -109,18 +109,18 @@ const response = await axios.get("https://httpbin.io/ip", {
 testProxy()
 ```
 
-Execute the script, and it should log:
+Führen Sie das Skript aus, und es sollte Folgendes protokollieren:
 
 ```js
 { "origin": "52.117.157.155" }
 ```
 
-> **Warning**:\
-> You will not get the same result if you run the script, because free proxy services are unreliable, slow, error-prone, data-greedy, and short-lived.
+> **Warnung**:\
+> Sie erhalten nicht dasselbe Ergebnis, wenn Sie das Skript ausführen, da kostenlose Proxy-Dienste unzuverlässig, langsam, fehleranfällig, datengierig und kurzlebig sind.
 
 ### SOCKS Proxies
 
-If you try to set the “socks” string in the protocol field of the proxy config object, you will get the following error:
+Wenn Sie versuchen, die Zeichenkette „socks“ im Feld `protocol` des `proxy`-Konfigurationsobjekts festzulegen, erhalten Sie den folgenden Fehler:
 
 ```js
 AssertionError [ERR_ASSERTION]: protocol mismatch
@@ -142,36 +142,36 @@ AssertionError [ERR_ASSERTION]: protocol mismatch
 }
 ```
 
-That is because Axios does not natively support SOCKS proxies. Add the `socks-proxy-agent` npm library to your project’s dependencies:
+Das liegt daran, dass Axios SOCKS Proxies nicht nativ unterstützt. Fügen Sie die npm-Bibliothek `socks-proxy-agent` zu den Abhängigkeiten Ihres Projekts hinzu:
 
 ```bash
 npm install socks-proxy-agent
 ```
 
-This package allows you to connect to a SOCKS proxy server while making HTTP or HTTPS requests in Axios.
+Dieses Paket ermöglicht Ihnen, beim Ausführen von HTTP- oder HTTPS-Anfragen in Axios eine Verbindung zu einem SOCKS-Proxy-Server herzustellen.
 
-Then, import the SOCKS proxy agent implementation from the library:
+Importieren Sie dann die SOCKS-Proxy-Agent-Implementierung aus der Bibliothek:
 
 ```js
 const SocksProxyAgent = require("socks-proxy-agent")
 ```
 
-Or if you are an ESM user:
+Oder wenn Sie ESM verwenden:
 
 ```js
 import { SocksProxyAgent } from "socks-proxy-agent"
 ```
 
-Suppose this is the URL of your SOCKS proxy:
+Angenommen, dies ist die URL Ihres SOCKS Proxys:
 
 ```
 "socks://183.88.74.73:4153"
 ```
 
-> **Note**:\
-> The proxy protocol can be either “socks”, “socks5”, or “socks4”.
+> **Hinweis**:\
+> Das Proxy-Protokoll kann entweder „socks“, „socks5“ oder „socks4“ sein.
 
-Store it in a variable and pass it to the `SocksProxyAgent` constructor:
+Speichern Sie sie in einer Variable und übergeben Sie sie an den `SocksProxyAgent`-Konstruktor:
 
 ```js
 const proxyURL = "socks://183.88.74.73:4153"
@@ -179,9 +179,9 @@ const proxyURL = "socks://183.88.74.73:4153"
 const proxyAgent = new SocksProxyAgent(proxyURL)
 ```
 
-`SocksProxyAgent()` initializes an `http.Agent` instance to perform HTTP/HTTPS requests through the proxy URL.
+`SocksProxyAgent()` initialisiert eine `http.Agent`-Instanz, um HTTP/HTTPS-Anfragen über die Proxy-URL auszuführen.
 
-You can now use a SOCKS proxy with Axios as follows:
+Sie können nun einen SOCKS Proxy mit Axios wie folgt verwenden:
 
 ```js
 axios.get(targetURL, { 
@@ -193,9 +193,9 @@ axios.get(targetURL, { 
 })
 ```
 
-`httpAgent` and `httpsAgent` define the custom agent to use when performing HTTP and HTTPS requests, respectively. In other words, the HTTP or HTTPS request made by Axios will go through the specified SOCKS proxy. In a similar way, you can use the [`https-proxy-agent`](https://www.npmjs.com/package/https-proxy-agent) npm package as an alternative way to set HTTP/HTTPS proxies in Axios.
+`httpAgent` und `httpsAgent` definieren den benutzerdefinierten Agent, der beim Ausführen von HTTP- bzw. HTTPS-Anfragen verwendet werden soll. Mit anderen Worten: Die von Axios ausgeführte HTTP- oder HTTPS-Anfrage wird über den angegebenen SOCKS Proxy geleitet. Auf ähnliche Weise können Sie das npm-Paket [`https-proxy-agent`](https://www.npmjs.com/package/https-proxy-agent) als alternative Möglichkeit verwenden, HTTP/HTTPS Proxies in Axios festzulegen.
 
-Put it all together:
+Fügen wir alles zusammen:
 
 ```js
 import axios from "axios"
@@ -231,15 +231,15 @@ async function testProxy() {
 testProxy()
 ```
 
-Follow the link for other examples of [how to configure a SOCKS proxy in Axios](https://writech.run/blog/how-to-use-a-socks-proxy-in-axios-6c0355a2e013/).
+Folgen Sie dem Link für weitere Beispiele dazu, [wie Sie einen SOCKS Proxy in Axios konfigurieren](https://writech.run/blog/how-to-use-a-socks-proxy-in-axios-6c0355a2e013/).
 
-## Axios Proxy: Advanced Use Cases
+## Axios Proxy: Fortgeschrittene Anwendungsfälle
 
-[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/blob/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.com/proxy-types/residential-proxies) 
+[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/blob/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.de/proxy-types/residential-proxies) 
 
-### Setting a Proxy Globally
+### Einen Proxy global festlegen
 
-You can set a proxy globally by specifying it directly in an Axios instance:
+Sie können einen Proxy global festlegen, indem Sie ihn direkt in einer Axios-Instanz angeben:
 
 ```js
 const axiosInstance = axios.create({
@@ -259,7 +259,7 @@ const axiosInstance = axios.create({
 })
 ```
 
-Or if you are a Proxy Agents user:
+Oder wenn Sie Proxy Agents verwenden:
 
 ```js
 // proxy Agent definition ...
@@ -273,7 +273,7 @@ const axiosInstance = axios.create({
 })
 ```
 
-Here’s how you configure Axios to use a SOCKS proxy globally:
+So konfigurieren Sie Axios, um global einen SOCKS Proxy zu verwenden:
 
 ```js
 import { SocksProxyAgent } from "socks-proxy-agent";
@@ -291,25 +291,25 @@ const axiosInstance = axios.create({
 });
 ```
 
-All requests made with `axiosInstance` will now automatically go through the specified proxy.
+Alle Anfragen, die mit `axiosInstance` ausgeführt werden, laufen nun automatisch über den angegebenen Proxy.
 
-### Dealing With Proxy Authentication in Axios
+### Umgang mit Proxy-Authentifizierung in Axios
 
-To allow only paying users access to premium proxies, proxy providers protect them with authentication. Trying to connect to an authenticated proxy without a username and password will result in a [407 Proxy Authentication Required](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/407) error.
+Um ausschließlich zahlenden Nutzern Zugriff auf Premium-Proxies zu gewähren, schützen Proxy-Anbieter diese mit Authentifizierung. Der Versuch, sich ohne Benutzername und Passwort mit einem authentifizierten Proxy zu verbinden, führt zu einem Fehler [407 Proxy Authentication Required](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/407).
 
-In particular, here is the syntax of the URL of an authenticated proxy:
+Insbesondere lautet die Syntax der URL eines authentifizierten Proxys:
 
 ```
 [<PROTOCOL>://]<USERNAME>:<PASSWORD>@<HOST>[:<PORT>]
 ```
 
-For example, a real-world URL to connect to an authenticated proxy might be:
+Beispielsweise könnte eine URL aus der Praxis für die Verbindung zu einem authentifizierten Proxy wie folgt aussehen:
 
 ```
 http://admin:lK4w90MEe45YIkOpk@156.127.0.192:8391
 ```
 
-In this case, the proxy URL field would be:
+In diesem Fall wären die Felder der Proxy-URL:
 
 - `<PROTOCOL>:HTTP`
 - `<HOST>:156.127.0.192`
@@ -317,7 +317,7 @@ In this case, the proxy URL field would be:
 - `<USERNAME>:admin`
 - `<PASSWORD>:lK4w90MEe45YIkOpk`
 
-To deal with proxy authentication in Axios, specify the username and password in the `authfield` of `proxy`:
+Um Proxy-Authentifizierung in Axios zu handhaben, geben Sie den Benutzernamen und das Passwort im `authfield` von `proxy` an:
 
 ```js
 axios.get(targetURL, {
@@ -343,15 +343,15 @@ axios.get(targetURL, {
 })
 ```
 
-If you are instead a Proxy Agents user, you have two ways to deal with authentication:
+Wenn Sie stattdessen Proxy Agents verwenden, haben Sie zwei Möglichkeiten, die Authentifizierung zu handhaben:
 
-1. Add the credentials directly in the proxy URL:
+1. Fügen Sie die Zugangsdaten direkt in die Proxy-URL ein:
 
 ```js
 var proxyAgent = new SocksProxyAgent("http://admin:[email protected]:8391")
 ```
 
-2. Set the `username` and `password` options in a [URL](https://nodejs.org/api/url.html) object:
+2. Legen Sie die Optionen `username` und `password` in einem [URL](https://nodejs.org/api/url.html)-Objekt fest:
 
 ```js
 const proxyOpts = new URL("http://156.127.0.192:8391")
@@ -363,16 +363,16 @@ proxyOpts.password = "lK4w90MEe45YIkOpk"
 const proxyAgent = new SocksProxyAgent(proxyOpts)
 ```
 
-The same approaches also work with HttpsProxyAgent.
+Die gleichen Ansätze funktionieren auch mit HttpsProxyAgent.
 
-### Setting Proxies via Environment Variables
+### Proxies über Umgebungsvariablen festlegen
 
-Another way to configure a proxy globally in Axios is by setting the following environment variables:
+Eine weitere Möglichkeit, einen Proxy global in Axios zu konfigurieren, besteht darin, die folgenden Umgebungsvariablen zu setzen:
 
-- `HTTP_PROXY`: The URL of the proxy server to use for HTTP requests.
-- `HTTPS_PROXY`: The URL of the proxy server to use for HTTPS requests.
+- `HTTP_PROXY`: Die URL des Proxy-Servers, der für HTTP-Anfragen verwendet werden soll.
+- `HTTPS_PROXY`: Die URL des Proxy-Servers, der für HTTPS-Anfragen verwendet werden soll.
 
-On Linux or macOS, you can set them like this:
+Unter Linux oder macOS können Sie sie wie folgt setzen:
 
 ```bash
 export HTTP_PROXY = "[<PROTOCOL>://]<USERNAME>:<PASSWORD>@<HOST>[:<PORT>]"
@@ -380,27 +380,27 @@ export HTTP_PROXY = "[<PROTOCOL>://]<USERNAME>:<PASSWORD>@<HOST>[:<PORT>]"
 export HTTPS_PROXY = "[<PROTOCOL>://]<USERNAME>:<PASSWORD>@<HOST>[:<PORT>]"
 ```
 
-When Axios detects these environment variables, it reads from them the proxy settings, including the credentials for authentication. Set the `proxy` field to `false` to make Axios ignore those environment variables. Keep in mind that you can also define a `NO_PROXY` env as a comma-separated list of domains that should not be proxied.
+Wenn Axios diese Umgebungsvariablen erkennt, liest es daraus die Proxy-Einstellungen, einschließlich der Zugangsdaten für die Authentifizierung. Setzen Sie das Feld `proxy` auf `false`, damit Axios diese Umgebungsvariablen ignoriert. Beachten Sie, dass Sie auch eine `NO_PROXY`-Umgebungsvariable als kommagetrennte Liste von Domains definieren können, die nicht über einen Proxy geleitet werden sollen.
 
-Note that the same mechanism also works when [using proxies in cURL](https://brightdata.com/blog/proxy-101/curl-with-proxies).
+Beachten Sie, dass derselbe Mechanismus auch funktioniert, wenn Sie [Proxies in cURL verwenden](https://brightdata.de/blog/proxy-101/curl-with-proxies).
 
-### Implementing Rotating Proxies
+### Rotierende Proxies implementieren
 
-To prevent the target site from blocking your proxy's IP address, ensure that each request you perform originates from a different proxy server:
+Um zu verhindern, dass die Zielseite die IP-Adresse Ihres Proxys blockiert, stellen Sie sicher, dass jede Anfrage, die Sie ausführen, von einem anderen Proxy-Server stammt:
 
-1. Define a list of objects, each containing the information to connect to a different proxy.
-2. Randomly select a proxy object before each request.
-3. Configure the selected proxy in Axios.
+1. Definieren Sie eine Liste von Objekten, die jeweils die Informationen enthalten, um sich mit einem anderen Proxy zu verbinden.
+2. Wählen Sie vor jeder Anfrage zufällig ein Proxy-Objekt aus.
+3. Konfigurieren Sie den ausgewählten Proxy in Axios.
 
-The approach outlined above assumes that you have access to a pool of reliable proxy servers, such as the [rotating proxies](https://brightdata.com/solutions/rotating-proxies) that Bright Data offers.
+Der oben skizzierte Ansatz setzt voraus, dass Sie Zugriff auf einen Pool zuverlässiger Proxy-Server haben, wie z. B. die [Rotating Proxies](https://brightdata.de/solutions/rotating-proxies), die Bright Data anbietet.
 
 ## Conclusion
 
-Bright Data controls the best proxy servers in the world, serving Fortune 500 companies and over 20,000 customers. Its worldwide proxy network involves:
+Bright Data kontrolliert die besten Proxy-Server der Welt und bedient Fortune-500-Unternehmen sowie über 20.000 Kunden. Sein weltweites Proxy-Netzwerk umfasst:
 
-*   [Datacenter proxies](https://brightdata.com/proxy-types/datacenter-proxies) – Over 770,000 datacenter IPs.
-*   [Residential proxies](https://brightdata.com/proxy-types/residential-proxies) – Over 72M residential IPs in more than 195 countries.
-*   [ISP proxies](https://brightdata.com/proxy-types/isp-proxies) – Over 700,000 ISP IPs.
-*   [Mobile proxies](https://brightdata.com/proxy-types/mobile-proxies) – Over 7M mobile IPs.
+*   [Datacenter proxies](https://brightdata.de/proxy-types/datacenter-proxies) – Über 770.000 Rechenzentrums-IPs.
+*   [Residential proxies](https://brightdata.de/proxy-types/residential-proxies) – Über 72M Residential IPs in mehr als 195 Ländern.
+*   [ISP proxies](https://brightdata.de/proxy-types/isp-proxies) – Über 700.000 ISP-IPs.
+*   [Mobile proxies](https://brightdata.de/proxy-types/mobile-proxies) – Über 7M mobile IPs.
 
-[Create a free Bright Data account](https://brightdata.com/#popup-155639) today to try our proxy servers.
+[Erstellen Sie noch heute ein kostenloses Bright Data-Konto](https://brightdata.de/#popup-155639), um unsere Proxy-Server auszuprobieren.
