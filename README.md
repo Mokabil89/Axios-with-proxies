@@ -1,6 +1,6 @@
 # Einrichten eines Proxys in Axios
 
-[![Promo](https://github.com/luminati-io/Rotating-Residential-Proxies/blob/main/50%25%20off%20promo.png)](https://brightdata.de/proxy-types/residential-proxies) 
+[![Promo](https://github.com/bright-data-de/Rotating-Residential-Proxies/blob/main/50%25%20off%20promo.png)](https://brightdata.de/proxy-types/residential-proxies) 
 
 Dieser Axios-Proxy-Leitfaden behandelt die folgenden Themen:
 
@@ -235,7 +235,7 @@ Folgen Sie dem Link für weitere Beispiele dazu, [wie Sie einen SOCKS Proxy in A
 
 ## Axios Proxy: Fortgeschrittene Anwendungsfälle
 
-[![Promo](https://github.com/luminati-io/LinkedIn-Scraper/blob/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.de/proxy-types/residential-proxies) 
+[![Promo](https://github.com/bright-data-de/LinkedIn-Scraper/blob/main/Proxies%20and%20scrapers%20GitHub%20bonus%20banner.png)](https://brightdata.de/proxy-types/residential-proxies) 
 
 ### Einen Proxy global festlegen
 
